@@ -23,6 +23,8 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
 	Optional <Categoria> findById(Long id);
 	
+	Categoria findByNombre(String nombre);
+	
 	@Transactional
 	void deleteById(Long id);
 	

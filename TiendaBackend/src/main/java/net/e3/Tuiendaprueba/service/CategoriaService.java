@@ -46,6 +46,10 @@ public class CategoriaService {
 			throw new RecordNotFoundException("Record does not exist for the given Id");
 		}
 	}
+	
+	public Categoria findCategoria(Categoria categoria) {
+		return (Categoria) repo.findByNombre(categoria.getNombre());
+	}
 
 	public Categoria createCategoria(Categoria categoria){
 		return repo.save(categoria);

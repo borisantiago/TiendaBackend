@@ -62,9 +62,16 @@ public class CategoriaController {
 		
 		ObjectMapper om = new ObjectMapper();
 		Categoria categoria=om.readValue(s, Categoria[].class)[0];
+				
+		if(service.findCategoria(categoria)==null) {
+			service.createCategoria(categoria);
+			return new ResponseEntity<Categoria>(categoria, new HttpHeaders(), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<Categoria>(HttpStatus.CONFLICT); 
+		}
+			
 		
-		service.createCategoria(categoria);
-		return new ResponseEntity<Categoria>(categoria, new HttpHeaders(), HttpStatus.OK);
+		
 	}
 
 	@PutMapping("/categoria")
