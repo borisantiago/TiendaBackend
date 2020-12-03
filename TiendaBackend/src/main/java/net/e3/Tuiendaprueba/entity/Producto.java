@@ -28,102 +28,177 @@ public class Producto {
 	private Long id;
 	
 	private String nombre;
-	private Double precio;
+	private float precio;
 	private String descripcion;
 	
-	@Type(type = "uuid-char")
-	private UUID imagen1;
+	//@Type(type = "uuid-char")
+	private String imagen1;
 	
-	@Type(type = "uuid-char")
-	private UUID imagen2;
+	//@Type(type = "uuid-char")
+	private String imagen2;
 	
-	@Type(type = "uuid-char")
-	private UUID imagen3;
+	//@Type(type = "uuid-char")
+	private String imagen3;
 	
-	private Long inicio;
-	private Long cantidad;
+	private int inicio;
+	private int cantidad;
 	
-	private Long categoriaid;
+	private int categoriaid;
 	
 	public Long getId() {
 		return id;
 	}
 	
+	/*
 	public void setId(Long id) {
 		this.id = id;
 	}
+	*/
+	
+	public String setId(int id) {
+		if(id > 0) {
+			//this.id = id;
+			return "Se ingreso correctamente";
+		}else {
+			return "No se puede ingresar";
+		}
+	}
+	
+ 
 	
 	public String getNombre() {
 		return nombre;
 	}
 	
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public String setNombre(String nombre) {
+		if(nombre == ""){
+			this.nombre = nombre;
+			return "El nombre del producto no puede ser vacio";
+		}else {
+			return "El nombre es correcto";
+		}
+		
 	}
 	
-	public Double getPrecio() {
+	public float getPrecio() {
 		return precio;
 	}
 	
+	/*
 	public void setPrecio(Double precio) {
 		this.precio = precio;
+	}
+	*/
+	
+	//precio
+	public String setPrecio(float precio) {
+		if(precio == 0) {
+			this.precio = precio;
+			return "El precio no es correcto";
+		}else { 
+			return "El precio es correcto";
+		}
 	}
 	
 	public String getDescripcion() {
 		return descripcion;
 	}
 	
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public String setDescripcion(String descripcion) {
+		if(descripcion != "") {
+			this.descripcion = descripcion;
+			return "La descripcion es correcta";
+		}
+		else {
+		return "La descripcion no puede estar en blanco";
+		}
 	}
 	
-	public UUID getImagen1() {
+	public String getImagen1() {
 		return imagen1;
 	}
 	
-	public void setImagen1(UUID imagen1) {
-		this.imagen1 = imagen1;
+	public String setImagen1(String imagen1) {
+		if(imagen1 != "") {
+			this.imagen1 = imagen1;
+			return "La imagen es correcta";
+	}
+		else {
+		return "La imagen no es correcta";
+		}
 	}
 
 	
-	public UUID getImagen2() {
+	public String getImagen2() {
 		return imagen2;
 	}
 	
-	public void setImagen2(UUID imagen2) {
-		this.imagen2 = imagen2;
+	public String setImagen2(String imagen2) {
+		if(imagen2 != "") {
+			this.imagen2 = imagen2;
+			return "La imagen es correcta";
+		}
+		else {
+		return "La imagen no es correcta";
+		}
 	}
 	
-	public UUID getImagen3() {
+	public String getImagen3() {
 		return imagen3;
 	}
 	
-	public void setImagen3(UUID imagen3) {
-		this.imagen3 = imagen3;
+	public String setImagen3(String imagen3) {
+		if(imagen3 != "") {
+			this.imagen3 = imagen3;
+			return "La imagen es correcta";
+		}
+		else {
+		return "La imagen no es correcta";
+		}
 	}
 	
-	public Long getInicio() {
+	public int getInicio() {
 		return inicio;
 	}
 	
-	public void setInicio(Long inicio) {
-		this.inicio = inicio;
+	public String setInicio(int inicio) {
+		if(inicio == 1) {
+			this.inicio = inicio;
+			return "El producto esta en portada";
+		}
+		else {
+		return "El producto no se encuentra en portada";
+		}
 	}
 	
-	public Long getCantidad() {
+	public int getCantidad() {
 		return cantidad;
 	}
 	
-	public void setCantidad(Long cantidad) {
-		this.cantidad = cantidad;
+	public String setCantidad(int cantidad) {
+		if(cantidad == 0) {
+			this.cantidad = cantidad;
+			return "No existen productos en stock";
+		}
+		else {
+		return "Existen productos en Stock";
+		}
 	}
 	
-	public Long getCategoriaid() {
+	public int getCategoriaid() {
 		return categoriaid;
 	}
 	
-	public void setCategoriaid(Long categoriaid) {
-		this.categoriaid = categoriaid;
+	public String setCategoriaid(int categoriaid) {
+		if(categoriaid != 0) {
+			this.categoriaid = categoriaid;
+			return "La categoria es asignada correctamente";
+		}
+		else {
+		return "No tiene ninguna categoria asignada";
+		}
 	}
+
+	
 	
 }

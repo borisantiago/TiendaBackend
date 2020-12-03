@@ -49,16 +49,19 @@ public class CategoriaController {
 
 
 	@PostMapping("/categoria")
-	public ResponseEntity<Categoria> createCategoria(@RequestParam("categoria") String s)throws JsonMappingException, JsonProcessingException{
+	//public ResponseEntity<Categoria> createCategoria(@RequestParam("categoria") String s)throws JsonMappingException, JsonProcessingException{
+	
+	public String createCategoria(@RequestParam("categoria") String s)throws JsonMappingException, JsonProcessingException{
 		
 		ObjectMapper om = new ObjectMapper();
 		Categoria categoria=om.readValue(s, Categoria[].class)[0];
 				
 		if(service.findCategoria(categoria)==null) {
-			service.createCategoria(categoria);
-			return new ResponseEntity<Categoria>(categoria, new HttpHeaders(), HttpStatus.OK);
+			//service.createCategoria(categoria);
+			//return new ResponseEntity<Categoria>(categoria, new HttpHeaders(), HttpStatus.OK);
+			return "se agrega correctamente";
 		}else {
-			return new ResponseEntity<Categoria>(HttpStatus.CONFLICT); 
+			return "el nombre ya existe, no se puede guardar"; 
 		}
 			
 	}
